@@ -9,6 +9,7 @@
             com.google.firebase.FirebaseOptions
             com.google.firebase.FirebaseOptions$Builder
             com.google.firebase.auth.FirebaseAuth
+            com.google.firebase.auth.UserMetadata
             com.google.firebase.auth.FirebaseAuthException
             com.google.firebase.auth.UserRecord
             com.google.firebase.auth.UserRecord$CreateRequest
@@ -60,7 +61,8 @@
     :phone-number (. user-record getPhoneNumber)
     :display-name (. user-record getDisplayName)
     :disabled (. user-record isDisabled)
-    :custom-claims (. user-record getCustomClaims)})
+    :custom-claims (. user-record getCustomClaims)
+    :created-at (doto user-record (.getUserMetadata) (.getCreationTimestamp))})
 
 (defn- format-error [error]
    (. error getMessage))

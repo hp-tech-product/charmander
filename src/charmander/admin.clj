@@ -62,7 +62,7 @@
     :display-name (. user-record getDisplayName)
     :disabled (. user-record isDisabled)
     :custom-claims (. user-record getCustomClaims)
-    :created-at (doto user-record (.getUserMetadata) (.getCreationTimestamp))})
+    :created-at (.getCreationTimestamp (. user-record getUserMetadata))})
 
 (defn- format-error [error]
    (. error getMessage))
